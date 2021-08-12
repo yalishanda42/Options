@@ -129,11 +129,63 @@ final class OptionSetEnumTests: XCTestCase {
         let expect = 31
         XCTAssertEqual(all.rawValue, expect)
     }
+    
+    func testUnion() {
+        var options0: OptionSetEnum<MagicColor> = []
+        var options1: OptionSetEnum<MagicColor> = [.white]
+        var options2: OptionSetEnum<MagicColor> = orzhov
+        var options3: OptionSetEnum<MagicColor> = jeskai
+        
+        let expect0: OptionSetEnum<MagicColor> = izzet
+        let expect1: OptionSetEnum<MagicColor> = jeskai
+        let expect2: OptionSetEnum<MagicColor> = sansGreen
+        let expect3: OptionSetEnum<MagicColor> = jeskai
+        
+        options0.update(with: izzet)
+        options1.update(with: izzet)
+        options2.update(with: izzet)
+        options3.update(with: izzet)
+        
+        XCTAssertEqual(options0, expect0)
+        XCTAssertEqual(options1, expect1)
+        XCTAssertEqual(options2, expect2)
+        XCTAssertEqual(options3, expect3)
+    }
+    
+    func testContains() {
+        let options0: OptionSetEnum<MagicColor> = []
+        let options1: OptionSetEnum<MagicColor> = [.white]
+        let options2: OptionSetEnum<MagicColor> = orzhov
+        let options3: OptionSetEnum<MagicColor> = jeskai
+        
+        let toTest1: OptionSetEnum<MagicColor> = [.white]
+        let toTest2: OptionSetEnum<MagicColor> = izzet
+        
+        let result0toTest1 = options0.contains(toTest1)
+        let result1toTest1 = options1.contains(toTest1)
+        let result2toTest1 = options2.contains(toTest1)
+        let result3toTest1 = options3.contains(toTest1)
+        let result0toTest2 = options0.contains(toTest2)
+        let result1toTest2 = options1.contains(toTest2)
+        let result2toTest2 = options2.contains(toTest2)
+        let result3toTest2 = options3.contains(toTest2)
+        
+        XCTAssertEqual(result0toTest1, false)
+        XCTAssertEqual(result1toTest1, true)
+        XCTAssertEqual(result2toTest1, true)
+        XCTAssertEqual(result3toTest1, true)
+        XCTAssertEqual(result0toTest2, false)
+        XCTAssertEqual(result1toTest2, false)
+        XCTAssertEqual(result2toTest2, false)
+        XCTAssertEqual(result3toTest2, true)
+    }
 
     static var allTests = [
         ("testNoValue", testNoValue),
         ("testSingleValue", testSingleValue),
         ("testMultiValues", testMultiValues),
         ("testAllValues", testAllValues),
+        ("testUnion", testUnion),
+        ("testContains", testContains),
     ]
 }
