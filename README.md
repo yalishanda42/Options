@@ -1,5 +1,8 @@
 # Options
 
+[![Build and test](https://github.com/allexks/Options/actions/workflows/swift-build-test.yml/badge.svg)](https://github.com/allexks/Options/actions/workflows/swift-build-test.yml)
+![GitHub](https://img.shields.io/github/license/allexks/Options)
+
 The swiftier `OptionSet`. With the help of enums.
 
 ## Problem
