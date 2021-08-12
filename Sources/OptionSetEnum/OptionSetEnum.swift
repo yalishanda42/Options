@@ -25,7 +25,7 @@ public struct OptionSetEnum<EnumType: CaseIterable & Hashable>: OptionSet {
     
     /// Initialize the option set via a case of the generic enum type.
     public init(_ option: EnumType) {
-        self.rawValue = Self.value(for: option)
+        rawValue = Self.value(for: option)
     }
     
     /// Initialize the option set via a combination of multiple cases of the generic enum type.
