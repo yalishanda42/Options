@@ -1,7 +1,7 @@
 import XCTest
-@testable import OptionSetEnum
+@testable import Options
 
-final class OptionSetEnumTests: XCTestCase {
+final class OptionsTests: XCTestCase {
     private enum MagicColor: CaseIterable {
         case white
         case blue
@@ -10,48 +10,48 @@ final class OptionSetEnumTests: XCTestCase {
         case green
     }
     
-    private let azorius: OptionSetEnum<MagicColor> = [.white, .blue]
-    private let orzhov: OptionSetEnum<MagicColor> = [.white, .black]
-    private let boros: OptionSetEnum<MagicColor> = [.white, .red]
-    private let selesnya: OptionSetEnum<MagicColor> = [.white, .green]
-    private let dimir: OptionSetEnum<MagicColor> = [.blue, .black]
-    private let izzet: OptionSetEnum<MagicColor> = [.blue, .red]
-    private let simic: OptionSetEnum<MagicColor> = [.blue, .green]
-    private let rakdos: OptionSetEnum<MagicColor> = [.black, .red]
-    private let golgari: OptionSetEnum<MagicColor> = [.black, .green]
-    private let gruul: OptionSetEnum<MagicColor> = [.red, .green]
+    private let azorius: Options<MagicColor> = [.white, .blue]
+    private let orzhov: Options<MagicColor> = [.white, .black]
+    private let boros: Options<MagicColor> = [.white, .red]
+    private let selesnya: Options<MagicColor> = [.white, .green]
+    private let dimir: Options<MagicColor> = [.blue, .black]
+    private let izzet: Options<MagicColor> = [.blue, .red]
+    private let simic: Options<MagicColor> = [.blue, .green]
+    private let rakdos: Options<MagicColor> = [.black, .red]
+    private let golgari: Options<MagicColor> = [.black, .green]
+    private let gruul: Options<MagicColor> = [.red, .green]
     
-    private let bant: OptionSetEnum<MagicColor> = [.green, .white, .blue]
-    private let esper: OptionSetEnum<MagicColor> = [.white, .blue, .black]
-    private let grixis: OptionSetEnum<MagicColor> = [.blue, .black, .red]
-    private let jund: OptionSetEnum<MagicColor> = [.black, .red, .green]
-    private let naya: OptionSetEnum<MagicColor> = [.red, .green, .white]
-    private let abzan: OptionSetEnum<MagicColor> = [.white, .black, .green]
-    private let jeskai: OptionSetEnum<MagicColor> = [.blue, .red, .white]
-    private let sultai: OptionSetEnum<MagicColor> = [.blue, .green, .black]
-    private let mardu: OptionSetEnum<MagicColor> = [.red, .white, .black]
-    private let temur: OptionSetEnum<MagicColor> = [.green, .blue, .red]
+    private let bant: Options<MagicColor> = [.green, .white, .blue]
+    private let esper: Options<MagicColor> = [.white, .blue, .black]
+    private let grixis: Options<MagicColor> = [.blue, .black, .red]
+    private let jund: Options<MagicColor> = [.black, .red, .green]
+    private let naya: Options<MagicColor> = [.red, .green, .white]
+    private let abzan: Options<MagicColor> = [.white, .black, .green]
+    private let jeskai: Options<MagicColor> = [.blue, .red, .white]
+    private let sultai: Options<MagicColor> = [.blue, .green, .black]
+    private let mardu: Options<MagicColor> = [.red, .white, .black]
+    private let temur: Options<MagicColor> = [.green, .blue, .red]
     
-    private let sansWhite: OptionSetEnum<MagicColor> = [.blue, .black, .red, .green]
-    private let sansBlue: OptionSetEnum<MagicColor> = [.black, .red, .green, .white]
-    private let sansBlack: OptionSetEnum<MagicColor> = [.red, .green, .white, .blue]
-    private let sansRed: OptionSetEnum<MagicColor> = [.green, .white, .blue, .black]
-    private let sansGreen: OptionSetEnum<MagicColor> = [.white, .blue, .black, .red]
+    private let sansWhite: Options<MagicColor> = [.blue, .black, .red, .green]
+    private let sansBlue: Options<MagicColor> = [.black, .red, .green, .white]
+    private let sansBlack: Options<MagicColor> = [.red, .green, .white, .blue]
+    private let sansRed: Options<MagicColor> = [.green, .white, .blue, .black]
+    private let sansGreen: Options<MagicColor> = [.white, .blue, .black, .red]
     
     func testNoValue() {
-        let test: OptionSetEnum<MagicColor> = []
-        let test2 = OptionSetEnum<MagicColor>()
+        let test: Options<MagicColor> = []
+        let test2 = Options<MagicColor>()
         
         XCTAssertEqual(test.rawValue, 0)
         XCTAssertEqual(test2.rawValue, 0)
     }
     
     func testSingleValue() {
-        let white: OptionSetEnum<MagicColor> =  [.white]
-        let blue: OptionSetEnum<MagicColor> = [.blue]
-        let black: OptionSetEnum<MagicColor> = [.black]
-        let red: OptionSetEnum<MagicColor> = [.red]
-        let green: OptionSetEnum = [MagicColor.green]
+        let white: Options<MagicColor> =  [.white]
+        let blue: Options<MagicColor> = [.blue]
+        let black: Options<MagicColor> = [.black]
+        let red: Options<MagicColor> = [.red]
+        let green: Options = [MagicColor.green]
         
         let whiteExpect = 1 << 0
         let blueExpect = 1 << 1
@@ -125,8 +125,8 @@ final class OptionSetEnumTests: XCTestCase {
     }
     
     func testAllValues() {
-        let all1: OptionSetEnum<MagicColor> = [.white, .blue, .black, .red, .green]
-        let all2: OptionSetEnum<MagicColor> = .all
+        let all1: Options<MagicColor> = [.white, .blue, .black, .red, .green]
+        let all2: Options<MagicColor> = .all
         
         let expect = 31
         
@@ -135,15 +135,15 @@ final class OptionSetEnumTests: XCTestCase {
     }
     
     func testUnion() {
-        var options0: OptionSetEnum<MagicColor> = []
-        var options1: OptionSetEnum<MagicColor> = [.white]
-        var options2: OptionSetEnum<MagicColor> = orzhov
-        var options3: OptionSetEnum<MagicColor> = jeskai
+        var options0: Options<MagicColor> = []
+        var options1: Options<MagicColor> = [.white]
+        var options2: Options<MagicColor> = orzhov
+        var options3: Options<MagicColor> = jeskai
         
-        let expect0: OptionSetEnum<MagicColor> = izzet
-        let expect1: OptionSetEnum<MagicColor> = jeskai
-        let expect2: OptionSetEnum<MagicColor> = sansGreen
-        let expect3: OptionSetEnum<MagicColor> = jeskai
+        let expect0: Options<MagicColor> = izzet
+        let expect1: Options<MagicColor> = jeskai
+        let expect2: Options<MagicColor> = sansGreen
+        let expect3: Options<MagicColor> = jeskai
         
         options0.update(with: izzet)
         options1.update(with: izzet)
@@ -157,13 +157,13 @@ final class OptionSetEnumTests: XCTestCase {
     }
     
     func testContains() {
-        let options0: OptionSetEnum<MagicColor> = []
-        let options1: OptionSetEnum<MagicColor> = [.white]
-        let options2: OptionSetEnum<MagicColor> = orzhov
-        let options3: OptionSetEnum<MagicColor> = jeskai
+        let options0: Options<MagicColor> = []
+        let options1: Options<MagicColor> = [.white]
+        let options2: Options<MagicColor> = orzhov
+        let options3: Options<MagicColor> = jeskai
         
-        let toTest1: OptionSetEnum<MagicColor> = [.white]
-        let toTest2: OptionSetEnum<MagicColor> = izzet
+        let toTest1: Options<MagicColor> = [.white]
+        let toTest2: Options<MagicColor> = izzet
         
         let result0toTest1 = options0.contains(toTest1)
         let result1toTest1 = options1.contains(toTest1)

@@ -1,4 +1,4 @@
-public struct OptionSetEnum<EnumType: CaseIterable & Hashable>: OptionSet {
+public struct Options<EnumType: CaseIterable & Hashable>: OptionSet {
     
     private static var options: [EnumType: Int] {
         .init(uniqueKeysWithValues: EnumType.allCases.enumerated().map {

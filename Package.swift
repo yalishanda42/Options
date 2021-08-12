@@ -4,23 +4,23 @@
 import PackageDescription
 
 let package = Package(
-    name: "OptionSetEnum",
+    name: "Options",
     products: [
         .library(
-            name: "OptionSetEnum",
-            targets: ["OptionSetEnum"]
+            name: "Options",
+            targets: ["Options"]
         ),
     ],
     dependencies: [
     ],
     targets: [
         .target(
-            name: "OptionSetEnum",
+            name: "Options",
             dependencies: []
         ),
         .testTarget(
-            name: "OptionSetEnumTests",
-            dependencies: ["OptionSetEnum"]
+            name: "OptionsTests",
+            dependencies: ["Options"]
         ),
     ]
 )
