@@ -125,9 +125,13 @@ final class OptionSetEnumTests: XCTestCase {
     }
     
     func testAllValues() {
-        let all: OptionSetEnum<MagicColor> = [.white, .blue, .black, .red, .green]
+        let all1: OptionSetEnum<MagicColor> = [.white, .blue, .black, .red, .green]
+        let all2: OptionSetEnum<MagicColor> = .all
+        
         let expect = 31
-        XCTAssertEqual(all.rawValue, expect)
+        
+        XCTAssertEqual(all1.rawValue, expect)
+        XCTAssertEqual(all2.rawValue, expect)
     }
     
     func testUnion() {
