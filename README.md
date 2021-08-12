@@ -8,7 +8,7 @@
 
 The swiftier `OptionSet`. With the help of enums.
 
-## Problem
+## The Problem
 
 Let's say that you have some model in your code, for example named `Card`. This model has a property `color` which aims to represent its color. Let's also say that all possible card colors are *white*, *blue*, *black*, *red*, *green* and **all possible combinations of those 5, including none of them**.
 
@@ -34,7 +34,7 @@ The code snippet above shows the bare minimum for creating an `OptionSet` that w
 
 Our "swifty" intuition tells us that we can do better, can't we?
 
-## Solution
+## The Solution
 
 Create a regular enum with all options. They don't need to have a raw value, the only condition is that the enum should conform to `CaseIterable` (because the way they are arranged in the `.allCases` array will determine their raw values).
 
@@ -58,3 +58,7 @@ let allColors: Options<CardColor> = .all // convenience property for combining a
 ```
 
 No need for boilerplates and supplying the raw values of all flags.
+
+## License
+
+[MIT](LICENSE)
