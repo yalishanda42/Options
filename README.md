@@ -59,6 +59,10 @@ let allColors: Options<CardColor> = .all // convenience property for combining a
 
 No need for boilerplates and supplying the raw values of all flags.
 
+## Limitations
+
+The supplied `enum` needs to have a maximum of 31 cases.
+
 ## License
 
 [MIT](LICENSE)

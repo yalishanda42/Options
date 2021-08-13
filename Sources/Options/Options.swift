@@ -2,7 +2,7 @@ public struct Options<EnumType: CaseIterable & Hashable>: OptionSet {
     
     private static var options: [EnumType: Int] {
         .init(uniqueKeysWithValues: EnumType.allCases.enumerated().map {
-            (key: $1, value: 2.to(exponent: $0))
+            (key: $1, value: Int(1 << $0))
         })
     }
     
@@ -31,11 +31,5 @@ public struct Options<EnumType: CaseIterable & Hashable>: OptionSet {
     /// Initialize the option set via a combination of multiple cases of the generic enum type.
     public init(arrayLiteral elements: EnumType...) {
         rawValue = elements.map(Self.value(for:)).reduce(0, |)
-    }
-}
-
-fileprivate extension Int {
-    func to(exponent n: Int) -> Int {
-        Array(repeating: self, count: n).reduce(1, *)
     }
 }
