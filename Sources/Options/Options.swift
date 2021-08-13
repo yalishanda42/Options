@@ -12,7 +12,7 @@ public struct Options<EnumType: CaseIterable & Hashable>: OptionSet {
     
     /// Convenience property of an instance containing all possible options.
     public static var all: Self {
-        .init(rawValue: options.values.reduce(0, +))
+        .init(rawValue: options.values.reduce(0, |))
     }
     
     /// The raw value of the option set.
