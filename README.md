@@ -61,7 +61,14 @@ No need for boilerplates and supplying the raw values of all flags.
 
 ## Limitations
 
-The supplied `enum` needs to have a maximum of 64 cases.
+1. The square brackets should be present even if creating an instance just by using one option, for example:
+
+```swift
+Options<CardColor>.all.contains(.white)    // this will not compile
+Options<CardColor>.all.contains([.white]) //  this will solve it
+```
+
+2. The supplied `enum` needs to have a maximum of 64 cases.
 
 ## License
 
