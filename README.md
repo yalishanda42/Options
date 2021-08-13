@@ -61,7 +61,7 @@ No need for boilerplates and supplying the raw values of all flags.
 
 ## Limitations
 
-The supplied `enum` needs to have a maximum of 31 cases.
+The supplied `enum` needs to have a maximum of 64 cases.
 
 ## License
 
