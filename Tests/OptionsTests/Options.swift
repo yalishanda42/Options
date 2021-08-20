@@ -183,6 +183,28 @@ final class OptionsTests: XCTestCase {
         XCTAssertEqual(result2toTest2, false)
         XCTAssertEqual(result3toTest2, true)
     }
+    
+    func testAllOptionsContainingOption() {
+        let option0: MagicColor = .blue
+        let option1: Options<MagicColor> = [option0]
+        let option2 = jeskai
+        
+        let result0 = Options<MagicColor>.allContaining(option0)
+        let result1 = Options<MagicColor>.allContaining(option1)
+        let result2 = Options<MagicColor>.allContaining(option2)
+        
+        let expect2: [Options<MagicColor>] = [
+            jeskai,
+            sansGreen,
+            sansBlack,
+            .all
+        ]
+        
+        XCTAssertEqual(result0, result1)
+        XCTAssertEqual(result1.sorted { $0.rawValue < $1.rawValue }, result1)
+        XCTAssertEqual(result2.sorted { $0.rawValue < $1.rawValue }, result2)
+        XCTAssertEqual(result2, expect2)
+    }
 
     static var allTests = [
         ("testNoValue", testNoValue),

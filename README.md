@@ -56,10 +56,23 @@ Now in order to use the enum like an `OptionSet` we just need to use the `Option
 let colorless: Options<CardColor> = []
 let onlyWhite: Options<CardColor> = [.white]
 let bluAndRed: Options<CardColor> = [.blue, .red]
-let allColors: Options<CardColor> = .all // convenience property for combining all options
 ```
 
 No need for boilerplates and supplying the raw values of all flags.
+
+## Extras
+
+The following convenience properties and methods exist:
+
+```swift
+let allCombined: Options<CardColor> = .all // Equivalent to Options<Topping>([.white, .blue, .black, .red, .green])
+
+let allPossibleBlueColorCombinations = Options<CardColor>.allContaining(.blue) // returns a list of all elements which contain `[.blue]`, sorted ascendingly by their raw values
+
+let favoriteColorCombo: Options<CardColor> = [.white, .blue, .red]
+let allPossibleFavoriteColorCombinations = Options<CardColor>.allContaining(favoriteColorCombo) // returns a list of all elements which contain `[.white, .blue, .red]`, sorted ascendingly by their raw values
+let sameAsAbove = favoriteColorCombo.allCombinationsContainingSelf
+```
 
 ## Limitations
 
