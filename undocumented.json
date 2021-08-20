@@ -1,0 +1,12 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/runner/work/Options/Options/Sources/Options/Options.swift",
+      "line": 1,
+      "symbol": "Options",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/runner/work/Options/Options"
+}
