@@ -2,6 +2,8 @@
 
 ![Made for Swift](https://img.shields.io/badge/MADE%20FOR-SWIFT-orange?style=for-the-badge&logo=swift)
 
+![Swift Package Manager supported](https://img.shields.io/badge/SWIFT%20PACKAGE%20MANAGER-SUPPORTED-green?style=for-the-badge&logo=SWIFT)
+
 
 [![Build and test](https://github.com/allexks/Options/actions/workflows/swift-build-test.yml/badge.svg)](https://github.com/allexks/Options/actions/workflows/swift-build-test.yml)
 ![GitHub](https://img.shields.io/github/license/allexks/Options)
