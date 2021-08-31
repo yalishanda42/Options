@@ -205,6 +205,28 @@ final class OptionsTests: XCTestCase {
         XCTAssertEqual(result2.sorted { $0.rawValue < $1.rawValue }, result2)
         XCTAssertEqual(result2, expect2)
     }
+    
+    func testDecompose() {
+        let option0: Options<MagicColor> = []
+        let option1: Options<MagicColor> = [.blue]
+        let option2 = jeskai
+        let option3: Options<MagicColor> = .all
+        
+        let expect0: [MagicColor] = []
+        let expect1: [MagicColor] = [.blue]
+        let expect2: [MagicColor] = [.white, .blue, .red]
+        let expect3: [MagicColor] = [.white, .blue, .black, .red, .green]
+        
+        let result0 = option0.decomposed
+        let result1 = option1.decomposed
+        let result2 = option2.decomposed
+        let result3 = option3.decomposed
+        
+        XCTAssertEqual(result0, expect0)
+        XCTAssertEqual(result1, expect1)
+        XCTAssertEqual(result2, expect2)
+        XCTAssertEqual(result3, expect3)
+    }
 
     static var allTests = [
         ("testNoValue", testNoValue),
@@ -213,5 +235,6 @@ final class OptionsTests: XCTestCase {
         ("testAllValues", testAllValues),
         ("testUnion", testUnion),
         ("testContains", testContains),
+        ("testAllOptionsContainingOption", testAllOptionsContainingOption),
     ]
 }

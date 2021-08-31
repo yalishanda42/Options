@@ -72,6 +72,8 @@ let allPossibleBlueColorCombinations = Options<CardColor>.allContaining(.blue) /
 let favoriteColorCombo: Options<CardColor> = [.white, .blue, .red]
 let allPossibleFavoriteColorCombinations = Options<CardColor>.allContaining(favoriteColorCombo) // returns a list of all elements which contain `[.white, .blue, .red]`, sorted ascendingly by their raw values
 let sameAsAbove = favoriteColorCombo.allCombinationsContainingSelf
+
+let favoriteComboArray = favoriteColorCombo.decomposed // this is a [CardColor] array containing [.white, .blue, .red]
 ```
 
 ## Limitations

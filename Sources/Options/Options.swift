@@ -51,5 +51,10 @@ public struct Options<EnumType: CaseIterable & Hashable>: OptionSet {
             .map(Self.init(rawValue:))
             .filter { $0.contains(option) }
     }
+    
+    /// Convenience method returning an array of all cases contained in `self`, ordered by their respective option's raw value.
+    public var decomposed: [EnumType] {
+        EnumType.allCases.filter { contains([$0]) }
+    }
 
 }
